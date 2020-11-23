@@ -12,7 +12,7 @@ repositories {
 android {
     signingConfigs {
         release {
-            storeFile file('/home/lap13626/Downloads/hocMQTT/app/releasekey2.jks')
+            storeFile file('/home/lap13626/Downloads/Hoco/app/releasekey2.jks')
             storePassword '123123'
             keyAlias 'key1'
             keyPassword '123123'
@@ -22,7 +22,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.blue.hocmqtt"
+        applicationId "com.blue.hoco"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
