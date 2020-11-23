@@ -124,7 +124,7 @@ class MqttConnectionClient {
     }
 
     companion object {
-        var INSTANCE: MqttConnectionClient? = null
+        private var INSTANCE: MqttConnectionClient? = null
         fun getInstance(): MqttConnectionClient {
             if (INSTANCE == null) {
                 INSTANCE = MqttConnectionClient()
@@ -134,5 +134,30 @@ class MqttConnectionClient {
     }
 
     interface SubscribeTopicCallback : IMqttActionListener, MqttCallback {
+    }
+
+    abstract class SubscribeTopicCallbackAdapter : SubscribeTopicCallback {
+        override fun onSuccess(asyncActionToken: IMqttToken?) {
+        }
+
+        override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
+        }
+
+        override fun messageArrived(topic: String?, message: MqttMessage?) {
+        }
+
+        override fun connectionLost(cause: Throwable?) {
+        }
+
+        override fun deliveryComplete(token: IMqttDeliveryToken?) {
+        }
+    }
+
+    abstract class IMqttActionListenerAdapter : IMqttActionListener {
+        override fun onSuccess(asyncActionToken: IMqttToken?) {
+        }
+
+        override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
+        }
     }
 }

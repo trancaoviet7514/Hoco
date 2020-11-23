@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
          })
 
         vb.btnSubscribe.setOnClickListener(View.OnClickListener {
-            val listener = object : MqttConnectionClient.SubscribeTopicCallback {
+            val listener = object : MqttConnectionClient.SubscribeTopicCallbackAdapter() {
                 override fun onSuccess(asyncActionToken: IMqttToken?) {
                     Log.d("mqtt", "subscribe onSuccess")
                     Toast.makeText(applicationContext, "subscribe success", Toast.LENGTH_SHORT).show()
@@ -72,22 +72,44 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
                     Log.d("mqtt", "subscribe onSuccess")
+                    Toast.makeText(applicationContext, "subscribe failure", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun messageArrived(topic: String?, message: MqttMessage?) {
                     Log.d("mqtt", "messageArrived topic: $topic; message: $message")
                     vb.txtMessagesSub.setText(message.toString())
                 }
-
-                override fun connectionLost(cause: Throwable?) {
-                }
-
-                override fun deliveryComplete(token: IMqttDeliveryToken?) {
-                }
-
             }
 
             MqttConnectionClient.getInstance().subscribe(vb.txtSubcribeTopic.text.toString(), listener)
         })
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val listener = object : MqttConnectionClient.SubscribeTopicCallbackAdapter() {
+            override fun onSuccess(asyncActionToken: IMqttToken?) {
+                super.onSuccess(asyncActionToken)
+                MqttConnectionClient.getInstance().publish("STATUS", "fetch data", null)
+            }
+
+            override fun messageArrived(topic: String?, message: MqttMessage?) {
+                super.messageArrived(topic, message)
+                vb.txtMessagesSub.setText(message.toString())
+            }
+        }
+
+        if (MqttConnectionClient.getInstance().isConnected()) {
+            MqttConnectionClient.getInstance().subscribe("STATUS", listener)
+        } else {
+            val connectListener = object : MqttConnectionClient.IMqttActionListenerAdapter() {
+                override fun onSuccess(asyncActionToken: IMqttToken?) {
+                    MqttConnectionClient.getInstance().subscribe("STATUS", listener)
+                }
+            }
+
+            MqttConnectionClient.getInstance().connect(applicationContext, connectListener)
+        }
     }
 }
