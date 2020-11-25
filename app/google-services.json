@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "373951975741",
+    "firebase_url": "https://hoco-4d6e6.firebaseio.com",
+    "project_id": "hoco-4d6e6",
+    "storage_bucket": "hoco-4d6e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373951975741:android:1bbef8494f7cb426f8b554",
+        "android_client_info": {
+          "package_name": "com.hovi.hoco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373951975741-vhl5vdv6cs45vm3paobl19eod9bc798i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hovi.hoco",
+            "certificate_hash": "99b7ec6047415e2a38c94ed98e2834f8f10b3b47"
+          }
+        },
+        {
+          "client_id": "373951975741-o0cgnsf2lfiaf95s9qgirr8gpj6aao8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8VmeSiLlJ_skzg0UnaFmE35ivECURfIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373951975741-o0cgnsf2lfiaf95s9qgirr8gpj6aao8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

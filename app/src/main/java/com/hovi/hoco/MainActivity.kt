@@ -1,13 +1,18 @@
 package com.hovi.hoco
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import com.hovi.hoco.databinding.ActivityMainBinding
 import org.eclipse.paho.client.mqttv3.IMqttActionListener
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.IMqttToken
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
@@ -82,6 +87,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             MqttConnectionClient.getInstance().subscribe(vb.txtSubcribeTopic.text.toString(), listener)
+        })
+
+        vb.btnSignOut.setOnClickListener(View.OnClickListener {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+
+            val googleSignInClient = GoogleSignIn.getClient(this, gso)
+            googleSignInClient.signOut()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        FirebaseAuth.getInstance().signOut()
+                        startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                    }
+                }
         })
     }
 

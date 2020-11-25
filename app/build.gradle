@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply plugin: 'com.google.gms.google-services'
 
 repositories {
     maven {
@@ -22,7 +23,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.blue.hoco"
+        applicationId "com.hovi.hoco"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -66,4 +67,10 @@ dependencies {
     }
 
     implementation 'com.android.support:localbroadcastmanager:28.0.0'
+
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
 }
