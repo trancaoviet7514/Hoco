@@ -31,7 +31,7 @@ class ConfigServerActivity : AppCompatActivity() {
         binding.btnSaveServerConfig.setOnClickListener(View.OnClickListener {
             SharePreferenceUtils.setString(this, SERVER_IP, binding.txtIp.text.toString())
             SharePreferenceUtils.setString(this, SERVER_PORT, binding.txtPort.text.toString())
-            Toast.makeText(this@ConfigServerActivity, "Cập nhật thành công", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@ConfigServerActivity, getString(R.string.str_save_success), Toast.LENGTH_LONG).show()
         })
     }
 

@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
         android:elevation="4dp"
-        app:title="@string/str_setting"
-        app:titleTextColor="@color/white" />
+        app:title="@string/str_app_info"
+        app:titleTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,122 +26,133 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar_main">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/item_connect"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_item_list_white_1"
-            android:minHeight="48dp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp">
 
             <ImageView
-                android:id="@+id/icon_connect"
-                android:layout_width="@dimen/setting_item_icon_size"
-                android:layout_height="@dimen/setting_item_icon_size"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_connect"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/icon_app"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/icon_app"
+                android:text="@string/app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/txt_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/teal_700" />
+                android:text="@string/str_version"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@string/str_connect"
+                android:text="1.0.0"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/divider_connect"
-                app:layout_constraintStart_toEndOf="@id/icon_connect"
+                app:layout_constraintBottom_toBottomOf="@id/divider_version"
+                app:layout_constraintStart_toEndOf="@id/txt_version"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/divider_connect"
+                android:id="@+id/divider_version"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
                 android:background="@color/gray3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/icon_connect" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/txt_version"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/item_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_item_list_white_1"
-            android:minHeight="48dp">
+            android:padding="4dp">
 
-            <ImageView
-                android:id="@+id/icon_info"
-                android:layout_width="@dimen/setting_item_icon_size"
-                android:layout_height="@dimen/setting_item_icon_size"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_info"
+            <TextView
+                android:id="@+id/txt_dev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/blue1" />
+                android:text="@string/str_dev"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@string/str_about_app"
+                android:text="@string/app_name"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/divider_info"
-                app:layout_constraintStart_toEndOf="@id/icon_info"
+                app:layout_constraintBottom_toBottomOf="@id/divider_dev"
+                app:layout_constraintStart_toEndOf="@id/txt_dev"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/divider_info"
+                android:id="@+id/divider_dev"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
                 android:background="@color/gray3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/icon_info" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/txt_dev"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/item_sign_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_item_list_white_1"
-            android:minHeight="48dp">
+            android:padding="4dp">
 
-            <ImageView
-                android:id="@+id/icon_sign_out"
-                android:layout_width="@dimen/setting_item_icon_size"
-                android:layout_height="@dimen/setting_item_icon_size"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_sign_out"
+            <TextView
+                android:id="@+id/txt_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/red" />
+                android:text="@string/str_contact"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@string/str_sign_out"
+                android:text="@string/str_mail_support"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/divider_sign_out"
-                app:layout_constraintStart_toEndOf="@id/icon_sign_out"
+                app:layout_constraintBottom_toBottomOf="@id/divider_contact"
+                app:layout_constraintStart_toEndOf="@id/txt_contact"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/divider_sign_out"
+                android:id="@+id/divider_contact"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="12dp"
                 android:background="@color/gray3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/icon_sign_out" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/txt_contact"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
