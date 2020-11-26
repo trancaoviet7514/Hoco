@@ -3,6 +3,8 @@ package com.hovi.hoco
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         vb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(vb.root)
+
+        setSupportActionBar(vb.toolbarMain)
 
         vb.btnConnect.setOnClickListener(View.OnClickListener {
             val listener = object : IMqttActionListener {
@@ -88,19 +92,6 @@ class MainActivity : AppCompatActivity() {
 
             MqttConnectionClient.getInstance().subscribe(vb.txtSubcribeTopic.text.toString(), listener)
         })
-
-        vb.btnSignOut.setOnClickListener(View.OnClickListener {
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-
-            val googleSignInClient = GoogleSignIn.getClient(this, gso)
-            googleSignInClient.signOut()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        FirebaseAuth.getInstance().signOut()
-                        startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                    }
-                }
-        })
     }
 
     override fun onStart() {
@@ -129,5 +120,25 @@ class MainActivity : AppCompatActivity() {
 
             MqttConnectionClient.getInstance().connect(applicationContext, connectListener)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.tool_bar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> run {
+                startActivity(
+                    Intent(
+                        this,
+                        SettingActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                )
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
