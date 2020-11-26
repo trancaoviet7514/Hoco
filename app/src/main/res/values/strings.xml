@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hoco</string>
+    <string name="str_server">Server</string>
+    <string name="str_sign_out">Đăng xuất</string>
+    <string name="str_title_activity_config_server_connection">Ket noi</string>
+    <string name="str_host_name">host</string>
+    <string name="str_port">port</string>
+    <string name="str_save">Luu</string>
 </resources>
