@@ -3,6 +3,7 @@ package com.hovi.hoco
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -59,11 +60,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     .addOnCompleteListener(this) { task1 ->
                         if (task1.isSuccessful) {
                             startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                        } else {
+                            Toast.makeText(this, "login failure", Toast.LENGTH_SHORT).show()
                         }
                     }
 
             } catch (e: Exception) {
                 e.printStackTrace()
+                Toast.makeText(this, "login failure $e", Toast.LENGTH_SHORT).show()
             }
         }
     }
