@@ -65,12 +65,12 @@ public class ListRoomButtonAdapter extends BaseAdapter {
         }
 
         Room room = this.rooms.get(position);
-        //holder.icon.setText(country.getCountryName()); -> TODO:// set color and icon.
+        holder.icon.setImageDrawable(context.getResources().getDrawable(R.drawable.open_door));
         holder.name.setText(room.getName());
         if(position == chooseRoom){
-            enableView(holder.background, true);
+            enableView(holder, true);
         }else{
-            enableView(holder.background, false);
+            enableView(holder,false);
         }
         return convertView;
     }
@@ -82,14 +82,16 @@ public class ListRoomButtonAdapter extends BaseAdapter {
     }
 
 
-    public void enableView(ImageView imageView, boolean isEnable){
+    public void enableView(ViewHolder viewHolder, boolean isEnable){
         if(isEnable) {
-//            bgView.setImageResource(R.drawable.bg_button);
-            imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.bg_button));
+            viewHolder.background.setImageDrawable(context.getResources().getDrawable(R.drawable.bg_button));
+            viewHolder.icon.setColorFilter(context.getResources().getColor(R.color.white));
+            viewHolder.name.setTextColor(context.getResources().getColor(R.color.white));
         }
         else{
-//            bgView.setImageResource(R.drawable.bg_button_disable);
-            imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.bg_button_disable));
+            viewHolder.background.setImageDrawable(context.getResources().getDrawable(R.drawable.bg_button_disable));
+            viewHolder.icon.setColorFilter(context.getResources().getColor(R.color.gray));
+            viewHolder.name.setTextColor(context.getResources().getColor(R.color.gray));
         }
     }
 

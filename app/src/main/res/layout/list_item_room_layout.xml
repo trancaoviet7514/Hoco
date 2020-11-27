@@ -20,7 +20,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="48dp"
-        android:layout_height="48dp"/>
+        android:layout_height="48dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"/>
 
     <TextView
         android:id="@+id/item_room_name"

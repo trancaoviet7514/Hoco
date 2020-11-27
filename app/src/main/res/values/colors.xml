@@ -17,7 +17,11 @@
     <color name="low_white">#EDEDF1</color>
     <color name="gray">#AAABBF</color>
 
-    <color name="red">#E91E1E</color>
+<!--    <color name="red">#E91E1E</color>-->
     <color name="main_dark_25">#40A5D5CD</color>
+
+    <color name="gray3">#E8E6E6</color>
+    <color name="red">#F6484E</color>
+    <color name="blue1">#2196F3</color>
 
 </resources>
