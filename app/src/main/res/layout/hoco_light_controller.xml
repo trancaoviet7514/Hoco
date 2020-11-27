@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/hoco_ligth_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_hoco_controller"
+        tools:layout_editor_absoluteX="-114dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/hoco_ligth_bg_name"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:src="@drawable/bg_hoco_controller_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hoco_ligth_txt_name"/>
+
+    <TextView
+        android:id="@+id/hoco_ligth_txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name controller"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/hoco_ligth_bg_name"
+        app:layout_constraintBottom_toBottomOf="@id/hoco_ligth_bg_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="36dp"
+        android:paddingStart="36dp"/>
+
+    <com.hovi.hoco.hocoview.HocoVerticalSeekBar
+        android:id="@+id/hoco_ligth_seekbar"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:progressDrawable="@drawable/bg_hoco_progressbar"
+        app:layout_constraintBottom_toTopOf="@id/hoco_ligth_bg_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:thumb="@drawable/bg_hoco_progressbar_button"
+        android:layout_marginEnd="24dp"
+        android:max="100"
+        android:min="0"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/hoco_ligth_seekbar"
+        app:layout_constraintBottom_toBottomOf="@id/hoco_ligth_seekbar"
+        app:layout_constraintEnd_toStartOf="@id/hoco_ligth_seekbar"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        android:gravity="right"
+        android:weightSum="5">
+        <TextView
+            android:id="@+id/hoco_ligth_rucro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rực rỡ"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/hoco_ligth_rorang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rõ ràng"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/hoco_ligth_toiuu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tối ưu"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/hoco_ligth_emdui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Êm dịu"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/hoco_ligth_tat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tắt"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:gravity="center"/>
+    </LinearLayout>
+    <Space
+        android:id="@+id/hoco_space"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hoco_space"
+        app:layout_constraintEnd_toEndOf="@id/hoco_space">
+        <ImageView
+            android:id="@+id/hoco_ligth_ova1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/simple_cricle"/>
+        <ImageView
+            android:id="@+id/hoco_ligth_ova2"
+
+            android:padding="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/simple_cricle"/>
+        <ImageView
+            android:id="@+id/hoco_ligth_ova3"
+
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/simple_cricle"/>
+
+        <ImageView
+            android:id="@+id/hoco_ligth_ova4"
+
+            android:padding="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/simple_cricle"/>
+
+        <ImageView
+            android:id="@+id/hoco_ligth_ova5"
+            android:padding="32dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/simple_cricle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
