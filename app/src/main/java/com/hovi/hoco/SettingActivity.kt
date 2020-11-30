@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -14,6 +15,7 @@ import com.hovi.hoco.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {
     lateinit var binding: ActivitySettingBinding
+    var demoActivityTrigger = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,14 @@ class SettingActivity : AppCompatActivity() {
                     .setNegativeButton(getString(com.hovi.hoco.R.string.str_no), null)
                     .show()
 
+        })
+
+        binding.root.setOnClickListener(View.OnClickListener {
+            demoActivityTrigger++;
+            if (demoActivityTrigger == 7) {
+                demoActivityTrigger = 0
+                startActivity(Intent(this, DemoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+            }
         })
     }
 
