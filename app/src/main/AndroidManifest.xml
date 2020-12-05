@@ -17,7 +17,7 @@
         <activity android:name=".AppInfoActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".RemoteActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".DemoActivity" />
         <activity
             android:name=".SplashActivity"

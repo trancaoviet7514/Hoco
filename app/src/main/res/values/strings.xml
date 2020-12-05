@@ -18,4 +18,7 @@
     <string name="str_contact">Liên hệ:</string>
     <string name="str_mail_support">support@hoco.com</string>
     <string name="str_build_time">Build time:</string>
+    <string name="str_user_name">Tên đăng nhập</string>
+    <string name="str_login">Đăng nhập</string>
+    <string name="str_password">Mật khẩu</string>
 </resources>

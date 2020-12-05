@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="setting_item_icon_size">24dp</dimen>
+    <dimen name="login_edit_height">36dp</dimen>
+    <dimen name="login_edt_text_size">13sp</dimen>
 </resources>

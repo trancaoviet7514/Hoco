@@ -1,10 +1,12 @@
 package com.hovi.hoco
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -32,12 +34,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        vb.signInButton.setOnClickListener(this);
+//        vb.signInButton.setOnClickListener(this);
+        vb.txtVersion.text = "Home Controller Version " + BuildConfig.VERSION_NAME;
+        vb.btnLogin.setOnClickListener { view -> run {
+            startActivity(Intent(this, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        } }
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            vb.signInButton.id -> signIn()
+//            vb.signInButton.id -> signIn()
         }
     }
 
