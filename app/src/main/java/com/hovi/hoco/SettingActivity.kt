@@ -30,9 +30,9 @@ class SettingActivity : AppCompatActivity() {
             startActivity(Intent(this, ConfigServerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         })
 
-        binding.itemInfo.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, AppInfoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-        })
+        binding.itemClockApp.setOnClickListener(View.OnClickListener {  })
+        binding.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
+        binding.itemHelp.setOnClickListener(View.OnClickListener {  })
 
         binding.itemSignOut.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
