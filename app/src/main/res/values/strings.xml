@@ -17,4 +17,5 @@
     <string name="str_dev">Nhà phát triển:</string>
     <string name="str_contact">Liên hệ:</string>
     <string name="str_mail_support">support@hoco.com</string>
+    <string name="str_build_time">Build time:</string>
 </resources>
