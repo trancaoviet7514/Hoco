@@ -2,11 +2,13 @@ package com.hovi.hoco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,6 +43,8 @@ public class RemoteActivity extends AppCompatActivity {
     private ArrayList<Room> listRoom;
     private ListRoomButtonAdapter listRoomButtonAdapter;
 
+    private ImageView avatar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,8 @@ public class RemoteActivity extends AppCompatActivity {
         btnFan = findViewById(R.id.remote_button_fan);
         btnAirCondition = findViewById(R.id.remote_button_airconditioner);
         btnPowerSocket = findViewById(R.id.remote_button_powersocket);
+
+        avatar = findViewById(R.id.remote_avatar);
 
         lightController = findViewById(R.id.remote_light_controller);
         listView = findViewById(R.id.remote_list_air);
@@ -69,6 +75,13 @@ public class RemoteActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listRoomButtonAdapter.setChooseRoom(position);
                 listRoomButtonAdapter.notifyDataSetChanged();
+            }
+        });
+
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RemoteActivity.this, SettingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             }
         });
     }

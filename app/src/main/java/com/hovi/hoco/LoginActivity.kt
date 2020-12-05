@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 mAuth!!.signInWithCredential(credential)
                     .addOnCompleteListener(this) { task1 ->
                         if (task1.isSuccessful) {
-                            startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                            startActivity(Intent(this, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                         } else {
                             Toast.makeText(this, "login failure", Toast.LENGTH_SHORT).show()
                         }

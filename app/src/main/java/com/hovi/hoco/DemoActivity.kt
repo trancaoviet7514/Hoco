@@ -13,18 +13,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.hovi.hoco.databinding.ActivityMainBinding
+import com.hovi.hoco.databinding.ActivityDemoBinding
 import org.eclipse.paho.client.mqttv3.IMqttActionListener
 import org.eclipse.paho.client.mqttv3.IMqttToken
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 
-class MainActivity : AppCompatActivity() {
+class DemoActivity : AppCompatActivity() {
 
-    lateinit var vb: ActivityMainBinding
+    lateinit var vb: ActivityDemoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vb = ActivityMainBinding.inflate(layoutInflater)
+        vb = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(vb.root)
 
         setSupportActionBar(vb.toolbarMain)
