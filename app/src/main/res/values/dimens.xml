@@ -3,4 +3,6 @@
     <dimen name="setting_item_icon_size">24dp</dimen>
     <dimen name="login_edit_height">36dp</dimen>
     <dimen name="login_edt_text_size">13sp</dimen>
+    <dimen name="setting_item_icon_margin">48dp</dimen>
+    <dimen name="setting_item_icon_margin_end">28dp</dimen>
 </resources>

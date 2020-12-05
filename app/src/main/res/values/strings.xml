@@ -21,4 +21,9 @@
     <string name="str_user_name">Tên đăng nhập</string>
     <string name="str_login">Đăng nhập</string>
     <string name="str_password">Mật khẩu</string>
+    <string name="str_setting_connect">Cài đặt kết nối</string>
+    <string name="str_setting_lock_app">Thiết lập khóa ứng dụng</string>
+    <string name="str_help">Trợ giúp</string>
+    <string name="str_app_update">Cập nhật ứng dụng</string>
+    <string name="str_device_setting">Cài đặt thiết bị</string>
 </resources>
