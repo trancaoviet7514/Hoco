@@ -29,7 +29,14 @@ class SettingActivity : AppCompatActivity() {
 
         vb.itemClockApp.setOnClickListener(View.OnClickListener {  })
         vb.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
-        vb.itemHelp.setOnClickListener(View.OnClickListener {  })
+
+        vb.itemAppInfo.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, AppInfoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        })
+
+        vb.itemChangePassword.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, ChangePasswordActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        })
 
         vb.itemSignOut.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)

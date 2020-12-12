@@ -14,13 +14,14 @@
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hoco">
+        <activity android:name=".ChangePasswordActivity"></activity>
         <activity android:name=".ConfigServerActivity" />
         <activity android:name=".PreLoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AppInfoActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".RemoteActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".DemoActivity" />
         <activity
             android:name=".SplashActivity"

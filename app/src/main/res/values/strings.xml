@@ -30,4 +30,7 @@
     <string name="str_reenter_password">Nhập lại mật khẩu</string>
     <string name="str_connect_string">"Chuỗi kết nối "</string>
     <string name="str_change_password">Đổi mật khẩu</string>
+    <string name="str_current_password">Mật khẩu hiện tại</string>
+    <string name="str_new_password">Mật khẩu mới</string>
+    <string name="str_reenter_new_password">Nhập lại mật khẩu mới</string>
 </resources>
