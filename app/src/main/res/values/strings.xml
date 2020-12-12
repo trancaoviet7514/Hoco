@@ -26,4 +26,7 @@
     <string name="str_help">Trợ giúp</string>
     <string name="str_app_update">Cập nhật ứng dụng</string>
     <string name="str_device_setting">Cài đặt thiết bị</string>
+    <string name="str_sign_up">Đăng ký</string>
+    <string name="str_reenter_password">Nhập lại mật khẩu</string>
+    <string name="str_connect_string">"Chuỗi kết nối "</string>
 </resources>

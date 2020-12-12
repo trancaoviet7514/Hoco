@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray1">#ECECEC</color>
     <color name="gray2">#C9C9C9</color>
+    <color name="gray2_20">#40c9c9c9</color>
 
 <!--    UI Color -->
     <color name="main_light">#C7E4DF</color>
