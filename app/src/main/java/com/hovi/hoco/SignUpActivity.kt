@@ -36,6 +36,7 @@ class SignUpActivity : AppCompatActivity() {
                 FireBaseDataBaseUtils.signUp(userName, password, connectString, object : FireBaseDataBaseUtils.SignUpCallBack {
                     override fun onSuccess() {
                         ViewUtils.removeLoadingView(vb.root)
+                        SharePreferenceUtils.setString(this@SignUpActivity, LoginActivity.CURRENT_USERNAME, userName)
                         Snackbar.make(view, "Đăng ký thành công", Snackbar.LENGTH_LONG).show()
                         UIHandler.postDelayed(Runnable { startActivity(Intent(this@SignUpActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                         }, 1000)
