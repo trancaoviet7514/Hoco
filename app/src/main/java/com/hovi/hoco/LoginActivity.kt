@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = vb.txtPassword.text.toString()
                 FireBaseDataBaseUtils.login(userName, password, object : FireBaseDataBaseUtils.SignUpCallBack {
                     override fun onSuccess() {
+                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_USERNAME, userName)
                         ViewUtils.removeLoadingView(vb.root)
                         startActivity(Intent(this@LoginActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                     }
@@ -79,5 +80,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    companion object {
+        const val CURRENT_USERNAME = "CURRENT_USERNAME"
     }
 }

@@ -38,16 +38,8 @@ class SettingActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                     .setMessage(getString(com.hovi.hoco.R.string.str_confirm_log_out))
                     .setPositiveButton(getString(com.hovi.hoco.R.string.str_yes)) { _, _ ->
-                        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-
-                        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-                        googleSignInClient.signOut()
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        FirebaseAuth.getInstance().signOut()
-                                        startActivity(Intent(this, PreLoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                                    }
-                                }
+                        SharePreferenceUtils.setString(this, LoginActivity.CURRENT_USERNAME, "")
+                        startActivity(Intent(this, PreLoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                     }
                     .setNegativeButton(getString(com.hovi.hoco.R.string.str_no), null)
                     .show()
