@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.hovi.hoco.model.User
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -56,7 +57,7 @@ myRef.setValue("abc")
 
         }
 
-        fun login(userName: String, password: String, callback: SignUpCallBack) {
+        fun login(userName: String, password: String, callback: SignInCallBack) {
             val ref = Firebase.database.getReference(userName)
 
             ref.addValueEventListener(object : ValueEventListener {
@@ -65,7 +66,8 @@ myRef.setValue("abc")
                     val value = dataSnapshot.value
                     if (value != null && value is HashMap<*, *>) {
                         if (value["password"] == password) {
-                            callback.onSuccess()
+                            val user = User(userName, value["password"].toString(), value["connectionString"].toString())
+                            callback.onSuccess(user)
                         } else {
                             callback.onFail()
                         }
@@ -80,10 +82,26 @@ myRef.setValue("abc")
             })
 
         }
+
+        fun changePassword(userName: String, password: String, callback: CallBack) {
+            val ref = Firebase.database.getReference("$userName/password")
+            ref.setValue(password)
+            callback.onSuccess(null)
+        }
+    }
+
+    interface CallBack {
+        fun onSuccess(any: Any?)
+        fun onFail()
     }
 
     interface SignUpCallBack {
         fun onSuccess()
+        fun onFail()
+    }
+
+    interface SignInCallBack {
+        fun onSuccess(user: User)
         fun onFail()
     }
 }
