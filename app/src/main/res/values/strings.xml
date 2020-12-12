@@ -29,4 +29,5 @@
     <string name="str_sign_up">Đăng ký</string>
     <string name="str_reenter_password">Nhập lại mật khẩu</string>
     <string name="str_connect_string">"Chuỗi kết nối "</string>
+    <string name="str_change_password">Đổi mật khẩu</string>
 </resources>

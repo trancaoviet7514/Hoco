@@ -22,7 +22,7 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/demo_avatar"
+        android:src="@drawable/ic_default_avatar"
         app:civ_border_color="#00ffffff"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Việt Cao"
         android:textColor="@color/text_color"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -119,11 +118,11 @@
         app:layout_constraintTop_toBottomOf="@id/item_clock_app">
 
         <ImageView
-            android:id="@+id/icon_help"
+            android:id="@+id/icon_change_password"
             android:layout_width="@dimen/setting_item_icon_size"
             android:layout_height="@dimen/setting_item_icon_size"
             android:layout_marginStart="@dimen/setting_item_icon_margin"
-            android:src="@drawable/question"
+            android:src="@drawable/update_arrows"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -132,11 +131,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/setting_item_icon_margin_end"
-            android:text="@string/str_help"
+            android:text="@string/str_change_password"
             android:textColor="@color/text_color"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_help"
+            app:layout_constraintStart_toEndOf="@id/icon_change_password"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -152,11 +151,11 @@
         app:layout_constraintTop_toBottomOf="@id/item_help">
 
         <ImageView
-            android:id="@+id/icon_update"
+            android:id="@+id/icon_app_info"
             android:layout_width="@dimen/setting_item_icon_size"
             android:layout_height="@dimen/setting_item_icon_size"
             android:layout_marginStart="@dimen/setting_item_icon_margin"
-            android:src="@drawable/update_arrows"
+            android:src="@drawable/ic_information"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -165,11 +164,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/setting_item_icon_margin_end"
-            android:text="@string/str_app_update"
+            android:text="@string/str_app_info"
             android:textColor="@color/text_color"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_update"
+            app:layout_constraintStart_toEndOf="@id/icon_app_info"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,36 +5,33 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.FirebaseAuth
 import com.hovi.hoco.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySettingBinding
+    lateinit var vb: ActivitySettingBinding
     var demoActivityTrigger = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        vb = ActivitySettingBinding.inflate(layoutInflater)
+        setContentView(vb.root)
 
-        setSupportActionBar(binding.toolbarMain)
+        setSupportActionBar(vb.toolbarMain)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        vb.txtUserName.text = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_USERNAME)
 
-        binding.itemConnect.setOnClickListener(View.OnClickListener {
+        vb.itemConnect.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, ConfigServerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         })
 
-        binding.itemClockApp.setOnClickListener(View.OnClickListener {  })
-        binding.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
-        binding.itemHelp.setOnClickListener(View.OnClickListener {  })
+        vb.itemClockApp.setOnClickListener(View.OnClickListener {  })
+        vb.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
+        vb.itemHelp.setOnClickListener(View.OnClickListener {  })
 
-        binding.itemSignOut.setOnClickListener(View.OnClickListener {
+        vb.itemSignOut.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                     .setMessage(getString(com.hovi.hoco.R.string.str_confirm_log_out))
                     .setPositiveButton(getString(com.hovi.hoco.R.string.str_yes)) { _, _ ->
@@ -46,7 +43,7 @@ class SettingActivity : AppCompatActivity() {
 
         })
 
-        binding.root.setOnClickListener(View.OnClickListener {
+        vb.root.setOnClickListener(View.OnClickListener {
             demoActivityTrigger++;
             if (demoActivityTrigger == 7) {
                 demoActivityTrigger = 0
