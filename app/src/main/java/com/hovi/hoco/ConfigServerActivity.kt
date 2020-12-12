@@ -2,10 +2,13 @@ package com.hovi.hoco
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.hovi.hoco.databinding.ActivityConfigServerBinding
+import com.hovi.hoco.model.GlobalData
+import com.hovi.hoco.utils.FireBaseDataBaseUtils
 
 class ConfigServerActivity : AppCompatActivity() {
 
@@ -25,10 +28,26 @@ class ConfigServerActivity : AppCompatActivity() {
         val host = SharePreferenceUtils.getString(this, CONNECTION_STRING, "tcp://plcshop.webhop.me:1883")
         binding.txtConnectionString.setText(host)
 
-        binding.btnSave.setOnClickListener(View.OnClickListener {
-            SharePreferenceUtils.setString(this, CONNECTION_STRING, binding.txtConnectionString.text.toString())
-            Snackbar.make(binding.root, "Cập nhật thành công", Snackbar.LENGTH_LONG).show()
-        })
+        binding.btnSave.setOnClickListener {
+            val newConnectionString = binding.txtConnectionString.text.toString()
+
+            if (!TextUtils.isEmpty(newConnectionString)) {
+                FireBaseDataBaseUtils.updateConnectionString(
+                    GlobalData.currentUser!!.userName,
+                    newConnectionString,
+                    object : FireBaseDataBaseUtils.CallBack {
+                        override fun onSuccess(any: Any?) {
+                            SharePreferenceUtils.setString(this@ConfigServerActivity, CONNECTION_STRING, newConnectionString)
+                            Snackbar.make(binding.root, "Cập nhật thành công", Snackbar.LENGTH_LONG).show()
+                        }
+
+                        override fun onFail() {
+                            Snackbar.make(binding.root, "Thao tác thất bại", Snackbar.LENGTH_LONG).show()
+                        }
+                })
+            }
+
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

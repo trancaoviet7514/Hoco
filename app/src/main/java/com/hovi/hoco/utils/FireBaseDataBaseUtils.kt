@@ -1,24 +1,14 @@
 package com.hovi.hoco.utils
 
-import android.os.Build
-import android.util.Log
-import android.view.View
-import androidx.annotation.RequiresApi
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.hovi.hoco.model.User
-import org.json.JSONObject
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.ObjectOutputStream
-import java.util.*
-import java.util.Base64.getEncoder
-import kotlin.collections.HashMap
+
 
 /**
  * Created by VietTC on 05/12/2020.
@@ -87,6 +77,19 @@ myRef.setValue("abc")
             val ref = Firebase.database.getReference("$userName/password")
             ref.setValue(password)
             callback.onSuccess(null)
+        }
+
+        fun updateConnectionString(userName: String, newConnectionString: String, callback: CallBack) {
+            val ref = Firebase.database.getReference("$userName/connectionString")
+            val task = ref.setValue(newConnectionString)
+
+            task.addOnSuccessListener {
+                callback.onSuccess(null)
+            }
+
+            task.addOnFailureListener {
+                callback.onFail()
+            }
         }
     }
 
