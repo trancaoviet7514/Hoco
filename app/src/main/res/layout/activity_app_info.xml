@@ -74,7 +74,7 @@
                 android:text="1.0.0"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/divider_version"
-                app:layout_constraintStart_toEndOf="@id/txt_version"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/txt_version_value"/>
 
@@ -111,7 +111,7 @@
                 android:layout_marginStart="12dp"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/txt_build_time"
-                app:layout_constraintStart_toEndOf="@id/txt_build_time"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/txt_build_time_value"/>
 
@@ -148,7 +148,7 @@
                 android:text="@string/app_name"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/divider_dev"
-                app:layout_constraintStart_toEndOf="@id/txt_dev"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
@@ -184,7 +184,7 @@
                 android:text="@string/str_mail_support"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/divider_contact"
-                app:layout_constraintStart_toEndOf="@id/txt_contact"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
