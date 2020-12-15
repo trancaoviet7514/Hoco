@@ -27,7 +27,9 @@ class SettingActivity : AppCompatActivity() {
             startActivity(Intent(this, ConfigServerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         })
 
-        vb.itemClockApp.setOnClickListener(View.OnClickListener {  })
+        vb.itemClockApp.setOnClickListener {
+            startActivity(Intent(this, SettingPassCodeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        }
         vb.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
 
         vb.itemAppInfo.setOnClickListener(View.OnClickListener {

@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "0.1.2"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+}
+
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'hanks-zyh'
+    groupId = 'com.hanks'
+    uploadName = 'PasscodeView'
+    artifactId = 'passcodeview'
+    publishVersion = '0.1.2'
+    desc = 'PasscodeView'
+    website = 'https://github.com/hanks-zyh/PasscodeView'
+}
