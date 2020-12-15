@@ -1,10 +1,12 @@
 package com.hovi.hoco
 
+import android.R
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
@@ -74,5 +76,15 @@ class SettingPassCodeActivity : AppCompatActivity() {
             vb.layoutChangePassCode.isEnabled = false
             vb.txtChangePassCode.isEnabled = false
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.home -> run {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
