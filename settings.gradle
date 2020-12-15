@@ -1,2 +1,3 @@
+include ':passcodeview'
 include ':app'
 rootProject.name = "Hoco"

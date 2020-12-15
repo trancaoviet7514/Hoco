@@ -104,6 +104,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation project(':passcodeview')
 }
 
 static def getDate() {

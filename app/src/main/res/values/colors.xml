@@ -10,8 +10,9 @@
     <color name="gray1">#ECECEC</color>
     <color name="gray2">#C9C9C9</color>
     <color name="gray2_20">#40c9c9c9</color>
+    <color name="gray2_50">#B3C9C9C9</color>
 
-<!--    UI Color -->
+    <!--    UI Color -->
     <color name="main_light">#C7E4DF</color>
     <color name="main_dark">#A5D5CD</color>
     <color name="text_color">#162844</color>

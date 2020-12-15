@@ -18,6 +18,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.hovi.hoco.databinding.ActivityLoginBinding
+import com.hovi.hoco.model.GlobalData
+import com.hovi.hoco.model.User
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
 import com.hovi.hoco.utils.ViewUtils
 
@@ -39,9 +41,13 @@ class LoginActivity : AppCompatActivity() {
                 ViewUtils.showLoadingView(vb.root, layoutInflater)
                 val userName = vb.txtUserName.text.toString()
                 val password = vb.txtPassword.text.toString()
-                FireBaseDataBaseUtils.login(userName, password, object : FireBaseDataBaseUtils.SignUpCallBack {
-                    override fun onSuccess() {
-                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_USERNAME, userName)
+                FireBaseDataBaseUtils.login(userName, password, object : FireBaseDataBaseUtils.SignInCallBack {
+                    override fun onSuccess(user: User) {
+                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_USERNAME, user.userName)
+                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_PASSWORD, user.password)
+                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_CONNECTION_STRING, user.connectionString)
+
+                        GlobalData.currentUser = user
                         ViewUtils.removeLoadingView(vb.root)
                         startActivity(Intent(this@LoginActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                     }
@@ -84,5 +90,7 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         const val CURRENT_USERNAME = "CURRENT_USERNAME"
+        const val CURRENT_PASSWORD = "CURRENT_PASSWORD"
+        const val CURRENT_CONNECTION_STRING = "CURRENT_CONNECTION_STRING"
     }
 }

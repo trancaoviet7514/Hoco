@@ -29,4 +29,12 @@
     <string name="str_sign_up">Đăng ký</string>
     <string name="str_reenter_password">Nhập lại mật khẩu</string>
     <string name="str_connect_string">"Chuỗi kết nối "</string>
+    <string name="str_change_password">Đổi mật khẩu</string>
+    <string name="str_current_password">Mật khẩu hiện tại</string>
+    <string name="str_new_password">Mật khẩu mới</string>
+    <string name="str_reenter_new_password">Nhập lại mật khẩu mới</string>
+    <string name="str_create_new_passcode">Tạo mới</string>
+    <string name="str_sign_turn_off_app_lock">Tắt khóa ứng dụng</string>
+    <string name="str_confirm_unlock_passcode">"Bạn có chắc chắn hủy bỏ khóa ứng dụng không? "</string>
+    <string name="str_change_pass_code">Đổi mã khóa</string>
 </resources>
