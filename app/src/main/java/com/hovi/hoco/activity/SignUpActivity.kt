@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.R
 import android.content.Intent
@@ -9,8 +9,10 @@ import android.text.TextUtils
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.hovi.hoco.BuildConfig
 import com.hovi.hoco.databinding.ActivitySignUpBinding
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.SharePreferenceUtils
 import com.hovi.hoco.utils.ViewUtils
 import com.hovi.hoco.utils.hideKeyboard
 

@@ -1,14 +1,14 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
-import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.hovi.hoco.databinding.ActivityConfigServerBinding
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.SharePreferenceUtils
 import com.hovi.hoco.utils.hideKeyboard
 
 class ConfigServerActivity : AppCompatActivity() {

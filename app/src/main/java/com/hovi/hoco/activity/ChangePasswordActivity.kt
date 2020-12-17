@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.R
 import androidx.appcompat.app.AppCompatActivity

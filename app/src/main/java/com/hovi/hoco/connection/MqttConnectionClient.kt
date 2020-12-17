@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.connection
 
 import android.content.Context
 import android.util.Log

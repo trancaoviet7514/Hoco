@@ -1,26 +1,18 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.R
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.KeyEvent
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.hovi.hoco.BuildConfig
 import com.hovi.hoco.databinding.ActivityLoginBinding
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.model.User
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.SharePreferenceUtils
 import com.hovi.hoco.utils.ViewUtils
 import com.hovi.hoco.utils.hideKeyboard
 

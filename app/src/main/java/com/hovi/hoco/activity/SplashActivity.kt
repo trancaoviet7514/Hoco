@@ -1,14 +1,15 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import com.google.firebase.auth.FirebaseAuth
 import com.hanks.passcodeview.PasscodeView
+import com.hovi.hoco.R
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.model.User
+import com.hovi.hoco.utils.SharePreferenceUtils
 
 class SplashActivity : AppCompatActivity() {
 
