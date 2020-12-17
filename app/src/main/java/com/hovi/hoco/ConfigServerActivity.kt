@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.hovi.hoco.databinding.ActivityConfigServerBinding
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.hideKeyboard
 
 class ConfigServerActivity : AppCompatActivity() {
 
@@ -29,6 +30,7 @@ class ConfigServerActivity : AppCompatActivity() {
         binding.txtConnectionString.setText(host)
 
         binding.btnSave.setOnClickListener {
+            hideKeyboard()
             val newConnectionString = binding.txtConnectionString.text.toString()
 
             if (!TextUtils.isEmpty(newConnectionString)) {

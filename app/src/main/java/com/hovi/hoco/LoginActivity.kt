@@ -22,6 +22,7 @@ import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.model.User
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
 import com.hovi.hoco.utils.ViewUtils
+import com.hovi.hoco.utils.hideKeyboard
 
 
 class LoginActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         vb.txtVersion.text = "Home Controller Version " + BuildConfig.VERSION_NAME;
         vb.btnLogin.setOnClickListener { view -> run {
+            hideKeyboard()
             if (inputValid()) {
                 ViewUtils.showLoadingView(vb.root, layoutInflater)
                 val userName = vb.txtUserName.text.toString()

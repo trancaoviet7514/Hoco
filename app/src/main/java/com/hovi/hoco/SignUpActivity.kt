@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.hovi.hoco.databinding.ActivitySignUpBinding
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
 import com.hovi.hoco.utils.ViewUtils
+import com.hovi.hoco.utils.hideKeyboard
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var vb : ActivitySignUpBinding
@@ -27,6 +28,7 @@ class SignUpActivity : AppCompatActivity() {
 
         vb.txtVersion.text = "Home Controller Version " + BuildConfig.VERSION_NAME;
         vb.btnSignUp.setOnClickListener { view -> run {
+            hideKeyboard()
             if (inputValid()) {
                 ViewUtils.showLoadingView(vb.root, layoutInflater)
                 val userName = vb.txtUserName.text.toString()
