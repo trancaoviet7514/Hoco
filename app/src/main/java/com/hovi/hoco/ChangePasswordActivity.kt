@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.hovi.hoco.databinding.ActivityChangePasswordBinding
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.hideKeyboard
 
 class ChangePasswordActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         vb.btnChangePassword.setOnClickListener(View.OnClickListener {
+            hideKeyboard()
             if (inputValid()) {
                 val newPassword = vb.txtNewPassword.text.toString()
                 FireBaseDataBaseUtils.changePassword(GlobalData.currentUser!!.userName, newPassword, object : FireBaseDataBaseUtils.CallBack {
