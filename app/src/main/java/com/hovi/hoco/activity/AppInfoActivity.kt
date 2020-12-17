@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.hovi.hoco.BuildConfig
+import com.hovi.hoco.R
 import com.hovi.hoco.databinding.ActivityAppInfoBinding
 
 

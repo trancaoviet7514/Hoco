@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.utils
 
 import android.content.Context
 

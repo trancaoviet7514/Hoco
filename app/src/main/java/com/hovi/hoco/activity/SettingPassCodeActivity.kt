@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.R
 import android.app.Activity
@@ -8,10 +8,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import com.google.android.material.snackbar.Snackbar
-import com.hovi.hoco.databinding.ActivitySettingBinding
 import com.hovi.hoco.databinding.ActivitySettingPassCodeBinding
+import com.hovi.hoco.utils.SharePreferenceUtils
 
 class SettingPassCodeActivity : AppCompatActivity() {
     lateinit var vb: ActivitySettingPassCodeBinding

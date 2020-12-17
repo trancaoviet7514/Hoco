@@ -1,4 +1,4 @@
-package com.hovi.hoco
+package com.hovi.hoco.activity
 
 import android.R
 import android.app.Activity
@@ -10,6 +10,7 @@ import android.text.TextUtils
 import android.view.MenuItem
 import com.hanks.passcodeview.PasscodeView
 import com.hovi.hoco.databinding.ActivityPassCodeBinding
+import com.hovi.hoco.utils.SharePreferenceUtils
 
 class PassCodeActivity : AppCompatActivity() {
 

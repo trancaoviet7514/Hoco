@@ -1,27 +1,22 @@
-package com.hovi.hoco;
+package com.hovi.hoco.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hovi.hoco.R;
 import com.hovi.hoco.adapter.ListRoomButtonAdapter;
 import com.hovi.hoco.hocoview.HocoButton;
 import com.hovi.hoco.hocoview.HocoLightController;
-import com.hovi.hoco.model.Device;
-import com.hovi.hoco.model.Light;
 import com.hovi.hoco.model.Room;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RemoteActivity extends AppCompatActivity {
 
