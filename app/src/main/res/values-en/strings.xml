@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hoco</string>
+    <string name="str_connect">Connect</string>
+    <string name="str_sign_out">Log out</string>
+    <string name="str_title_activity_config_server_connection">Connect</string>
+    <string name="str_save">Save</string>
+    <string name="str_save_success">Save success</string>
+    <string name="str_no">No</string>
+    <string name="str_yes">Yes</string>
+    <string name="str_confirm_log_out">Are you sure to log out?</string>
+    <string name="str_about_app">App infomation</string>
+    <string name="str_setting">Setting</string>
+    <string name="str_app_info">App Info</string>
+    <string name="str_version">Version:</string>
+    <string name="str_dev">Develop by:</string>
+    <string name="str_contact">Contact:</string>
+    <string name="str_user_name">User name</string>
+    <string name="str_login">Login</string>
+    <string name="str_password">Password</string>
+    <string name="str_setting_connect">Connecting setting</string>
+    <string name="str_setting_lock_app">Passcode</string>
+    <string name="str_help">Help</string>
+    <string name="str_app_update">App update</string>
+    <string name="str_device_setting">Device setting</string>
+    <string name="str_sign_up">Sign up</string>
+    <string name="str_reenter_password">reenter password</string>
+    <string name="str_connect_string">Connection string</string>
+    <string name="str_change_password">Change password</string>
+    <string name="str_current_password">Current password</string>
+    <string name="str_new_password">New password</string>
+    <string name="str_reenter_new_password">reenter new password</string>
+    <string name="str_create_new_passcode">New</string>
+    <string name="str_sign_turn_off_app_lock">Remove passcode</string>
+    <string name="str_confirm_unlock_passcode">Are you sure to remove passcode?</string>
+    <string name="str_change_pass_code">Change passcode</string>
+    <string name="str_change_language">Language</string>
+</resources>
