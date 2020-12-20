@@ -2,13 +2,12 @@ package com.hovi.hoco.activity
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.hanks.passcodeview.PasscodeView
 import com.hovi.hoco.R
-import com.hovi.hoco.model.GlobalData
-import com.hovi.hoco.model.User
 import com.hovi.hoco.utils.SharePreferenceUtils
 
 class SplashActivity : AppCompatActivity() {
@@ -38,16 +37,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startFlowCheckLogin() {
-        val username = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_USERNAME)
-        if (!TextUtils.isEmpty(username)) {
-            val password = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_PASSWORD)
-            val connectionString = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_CONNECTION_STRING)
-
-            GlobalData.currentUser = User(username!!, password!!, connectionString!!)
-
+        if (FirebaseAuth.getInstance().currentUser != null) {
             startActivity(Intent(this, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         } else {
-            startActivity(Intent(this, PreLoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+            startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
     }
 }

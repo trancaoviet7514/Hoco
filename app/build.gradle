@@ -105,6 +105,8 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation project(':passcodeview')
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
 
 static def getDate() {

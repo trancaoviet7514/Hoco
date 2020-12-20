@@ -40,4 +40,5 @@
     <string name="str_change_language">Ngôn ngữ</string>
     <string name="str_tieng_viet" translatable="false">Tiếng Việt</string>
     <string name="str_english" translatable="false">English</string>
+    <string name="str_login_with_google">Đăng nhập với Google</string>
 </resources>
