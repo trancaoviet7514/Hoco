@@ -42,40 +42,6 @@
         app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_connect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/background_item_list_white_1"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_user_name">
-
-        <ImageView
-            android:id="@+id/icon_connect"
-            android:layout_width="@dimen/setting_item_icon_size"
-            android:layout_height="@dimen/setting_item_icon_size"
-            android:layout_marginStart="@dimen/setting_item_icon_margin"
-            android:src="@drawable/password"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/setting_item_icon_margin_end"
-            android:text="@string/str_setting_connect"
-            android:textColor="@color/text_color"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_connect"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_clock_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,7 +49,8 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_connect">
+        app:layout_constraintTop_toBottomOf="@id/txt_user_name"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:id="@+id/icon_lock_app"
@@ -108,39 +75,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_change_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_item_list_white_1"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_clock_app">
-
-        <ImageView
-            android:id="@+id/icon_change_password"
-            android:layout_width="@dimen/setting_item_icon_size"
-            android:layout_height="@dimen/setting_item_icon_size"
-            android:layout_marginStart="@dimen/setting_item_icon_margin"
-            android:src="@drawable/update_arrows"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/setting_item_icon_margin_end"
-            android:text="@string/str_change_password"
-            android:textColor="@color/text_color"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_change_password"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_change_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -148,7 +82,7 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_change_password"
+        app:layout_constraintTop_toBottomOf="@id/item_clock_app"
         android:visibility="gone">
 
         <ImageView

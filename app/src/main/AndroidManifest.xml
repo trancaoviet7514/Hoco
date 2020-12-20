@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -16,10 +17,6 @@
         android:theme="@style/Theme.Hoco">
         <activity android:name=".activity.SettingPassCodeActivity"></activity>
         <activity android:name=".activity.PassCodeActivity" />
-        <activity android:name=".activity.ChangePasswordActivity" />
-        <activity android:name=".activity.ConfigServerActivity" />
-        <activity android:name=".activity.PreLoginActivity" />
-        <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.AppInfoActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.RemoteActivity" />

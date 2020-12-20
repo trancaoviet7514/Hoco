@@ -9,8 +9,11 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.hovi.hoco.databinding.ActivitySettingBinding
-import com.hovi.hoco.utils.SharePreferenceUtils
 import java.util.*
 
 
@@ -26,11 +29,12 @@ class SettingActivity : AppCompatActivity() {
         setSupportActionBar(vb.toolbarMain)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        vb.txtUserName.text = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_USERNAME)
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
-        vb.itemConnect.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, ConfigServerActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-        })
+        vb.txtUserName.text = currentUser!!.displayName
+        Glide.with(this)
+            .load(currentUser.photoUrl.toString())
+            .into(vb.profileImage);
 
         vb.itemClockApp.setOnClickListener {
             startActivity(Intent(this, SettingPassCodeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
@@ -41,16 +45,20 @@ class SettingActivity : AppCompatActivity() {
             startActivity(Intent(this, AppInfoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         })
 
-        vb.itemChangePassword.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, ChangePasswordActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-        })
-
         vb.itemSignOut.setOnClickListener(View.OnClickListener {
             AlertDialog.Builder(this)
                     .setMessage(getString(com.hovi.hoco.R.string.str_confirm_log_out))
                     .setPositiveButton(getString(com.hovi.hoco.R.string.str_yes)) { _, _ ->
-                        SharePreferenceUtils.setString(this, LoginActivity.CURRENT_USERNAME, "")
-                        startActivity(Intent(this, PreLoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+
+                        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+                        googleSignInClient.signOut()
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    FirebaseAuth.getInstance().signOut()
+                                    startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                                }
+                            }
                     }
                     .setNegativeButton(getString(com.hovi.hoco.R.string.str_no), null)
                     .show()

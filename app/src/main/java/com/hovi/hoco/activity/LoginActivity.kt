@@ -3,56 +3,43 @@ package com.hovi.hoco.activity
 import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.hovi.hoco.BuildConfig
 import com.hovi.hoco.databinding.ActivityLoginBinding
-import com.hovi.hoco.model.GlobalData
-import com.hovi.hoco.model.User
-import com.hovi.hoco.utils.FireBaseDataBaseUtils
-import com.hovi.hoco.utils.SharePreferenceUtils
-import com.hovi.hoco.utils.ViewUtils
-import com.hovi.hoco.utils.hideKeyboard
 
 
 class LoginActivity : AppCompatActivity() {
     lateinit var vb : ActivityLoginBinding
+    private var backPressCount = 0;
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vb = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(vb.root)
 
-        setSupportActionBar(vb.toolbarMain)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         vb.txtVersion.text = "Home Controller Version " + BuildConfig.VERSION_NAME;
+
+        mAuth = FirebaseAuth.getInstance();
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("373951975741-o0cgnsf2lfiaf95s9qgirr8gpj6aao8d.apps.googleusercontent.com")
+                .requestEmail()
+                .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         vb.btnLogin.setOnClickListener { view -> run {
-            hideKeyboard()
-            if (inputValid()) {
-                ViewUtils.showLoadingView(vb.root, layoutInflater)
-                val userName = vb.txtUserName.text.toString()
-                val password = vb.txtPassword.text.toString()
-                FireBaseDataBaseUtils.login(userName, password, object : FireBaseDataBaseUtils.SignInCallBack {
-                    override fun onSuccess(user: User) {
-                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_USERNAME, user.userName)
-                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_PASSWORD, user.password)
-                        SharePreferenceUtils.setString(this@LoginActivity, CURRENT_CONNECTION_STRING, user.connectionString)
-
-                        GlobalData.currentUser = user
-                        ViewUtils.removeLoadingView(vb.root)
-                        startActivity(Intent(this@LoginActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                    }
-
-                    override fun onFail() {
-                        ViewUtils.removeLoadingView(vb.root)
-                        Snackbar.make(view, "Tài khoản hoặc mật khẩu không đúng.", Snackbar.LENGTH_LONG).show()
-                    }
-
-                })
-            }
+            signIn()
         } }
     }
 
@@ -66,25 +53,53 @@ class LoginActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun inputValid(): Boolean{
-        val userName = vb.txtUserName.text.toString()
-        val password = vb.txtPassword.text.toString()
-
-        if (TextUtils.isEmpty(userName)) {
-            Snackbar.make(vb.root, "Tên đăng nhập phải khác rỗng", Snackbar.LENGTH_LONG).show()
-            return false
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        when (keyCode) {
+            KeyEvent.KEYCODE_BACK -> run {
+                backPressCount++
+                if (backPressCount == 2) {
+                    finishAffinity()
+                } else {
+                    Snackbar.make(vb.root, "Nhấn lần nữa để đóng ứng dụng", Snackbar.LENGTH_LONG).show()
+                    return true
+                }
+            }
         }
-        if (TextUtils.isEmpty(password)) {
-            Snackbar.make(vb.root, "Mật khẩu phải khác rỗng", Snackbar.LENGTH_LONG).show()
-            return false
-        }
+        return super.onKeyUp(keyCode, event)
+    }
 
-        return true
+    private fun signIn() {
+        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 0) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try {
+                val account = task.result
+                val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+
+                mAuth!!.signInWithCredential(credential)
+                        .addOnCompleteListener(this) { task1 ->
+                            if (task1.isSuccessful) {
+                                startActivity(Intent(this, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                            } else {
+                                Snackbar.make(vb.root, "Vui lòng kiểm tra kết nối mạng!", Snackbar.LENGTH_LONG).show()
+                            }
+                        }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Snackbar.make(vb.root, "Vui lòng kiểm tra kết nối mạng!", Snackbar.LENGTH_LONG).show()
+            }
+        }
     }
 
     companion object {
-        const val CURRENT_USERNAME = "CURRENT_USERNAME"
-        const val CURRENT_PASSWORD = "CURRENT_PASSWORD"
         const val CURRENT_CONNECTION_STRING = "CURRENT_CONNECTION_STRING"
     }
 }
