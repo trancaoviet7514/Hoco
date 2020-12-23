@@ -36,6 +36,10 @@ class SettingActivity : AppCompatActivity() {
             .load(currentUser.photoUrl.toString())
             .into(vb.profileImage);
 
+        vb.itemManagingAccess.setOnClickListener {
+            startActivity(Intent(this, ManagingAccessActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        }
+
         vb.itemClockApp.setOnClickListener {
             startActivity(Intent(this, SettingPassCodeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }

@@ -41,4 +41,14 @@
     <string name="str_tieng_viet" translatable="false">Tiếng Việt</string>
     <string name="str_english" translatable="false">English</string>
     <string name="str_login_with_google">Đăng nhập với Google</string>
+    <string name="str_setting_managing_access">Quản lí truy cập</string>
+    <string name="str_gmail_account" translatable="false">hoco@gmail.com</string>
+    <string name="str_dialog_add_new_account_message"> Nhập tài khoản Gmail muốn chia sẻ vào ô bên dưới.</string>
+    <string name="str_ok" translatable="false">Ok</string>
+    <string name="str_cancel">Hủy</string>
+    <string name="str_agree">Đồng ý</string>
+    <string name="str_confirm_remove_account_shared">Bạn muốn xóa &lt;br> &lt;b>%s&lt;/b> &lt;br>khỏi danh sách truy cập hệ thống?</string>
+    <string name="str_error_account_share_have_to_difference_current_account">Bạn không thể tự chia sẻ cho chính mình!</string>
+    <string name="str_error_message_connection_string_invalid">Tài khoản của bạn chưa được kết nối với hệ thống. Vui lòng liên hệ với quản lí hệ thống của bạn.</string>
+    <string name="close">Đóng</string>
 </resources>
