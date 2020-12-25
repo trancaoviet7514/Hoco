@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.hovi.hoco.databinding.ActivitySettingBinding
+import com.hovi.hoco.model.GlobalData
 import java.util.*
 
 
@@ -34,44 +35,52 @@ class SettingActivity : AppCompatActivity() {
         vb.txtUserName.text = currentUser!!.displayName
         Glide.with(this)
             .load(currentUser.photoUrl.toString())
-            .into(vb.profileImage);
+            .into(vb.profileImage)
+
+        if (GlobalData.currentUser?.isAdmin == true) {
+            vb.itemManagingAccess.visibility = View.VISIBLE
+        }
+
+        vb.itemManagingAccess.setOnClickListener {
+            startActivity(Intent(this, ManagingAccessActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        }
 
         vb.itemClockApp.setOnClickListener {
             startActivity(Intent(this, SettingPassCodeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
-        vb.itemDeviceSetting.setOnClickListener(View.OnClickListener {  })
+        vb.itemDeviceSetting.setOnClickListener {  }
 
-        vb.itemAppInfo.setOnClickListener(View.OnClickListener {
+        vb.itemAppInfo.setOnClickListener {
             startActivity(Intent(this, AppInfoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-        })
+        }
 
-        vb.itemSignOut.setOnClickListener(View.OnClickListener {
+        vb.itemSignOut.setOnClickListener {
             AlertDialog.Builder(this)
-                    .setMessage(getString(com.hovi.hoco.R.string.str_confirm_log_out))
-                    .setPositiveButton(getString(com.hovi.hoco.R.string.str_yes)) { _, _ ->
-                        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+                .setMessage(getString(com.hovi.hoco.R.string.str_confirm_log_out))
+                .setPositiveButton(getString(com.hovi.hoco.R.string.str_yes)) { _, _ ->
+                    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
 
-                        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-                        googleSignInClient.signOut()
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    FirebaseAuth.getInstance().signOut()
-                                    startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                                }
+                    val googleSignInClient = GoogleSignIn.getClient(this, gso)
+                    googleSignInClient.signOut()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                FirebaseAuth.getInstance().signOut()
+                                startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                             }
-                    }
-                    .setNegativeButton(getString(com.hovi.hoco.R.string.str_no), null)
-                    .show()
+                        }
+                }
+                .setNegativeButton(getString(com.hovi.hoco.R.string.str_no), null)
+                .show()
 
-        })
+        }
 
-        vb.root.setOnClickListener(View.OnClickListener {
-            demoActivityTrigger++;
+        vb.root.setOnClickListener {
+            demoActivityTrigger++
             if (demoActivityTrigger == 7) {
                 demoActivityTrigger = 0
                 startActivity(Intent(this, DemoActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
             }
-        })
+        }
 
         vb.itemChangeLanguage.setOnClickListener{
             val contentView = layoutInflater.inflate(com.hovi.hoco.R.layout.dialog_change_language, null)

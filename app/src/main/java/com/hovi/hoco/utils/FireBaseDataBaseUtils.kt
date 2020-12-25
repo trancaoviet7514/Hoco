@@ -1,12 +1,11 @@
 package com.hovi.hoco.utils
 
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.model.User
 
 
@@ -16,15 +15,8 @@ import com.hovi.hoco.model.User
 class FireBaseDataBaseUtils {
 
     companion object {
-        fun writeDemo() {
-            val database = Firebase.database
-            val myRef = database.getReference("message/bbc/hi")
-myRef.setValue("abc")
-//            myRef.child("haha").setValue("Hello, World!")
 
-        }
-
-        fun signUp(userName: String, password: String, connectionString: String, callback: SignUpCallBack) {
+        fun signUp(userName: String, password: String, connectionString: String, callback: CallBack) {
             val ref = Firebase.database.getReference(userName)
 
             ref.addValueEventListener(object : ValueEventListener {
@@ -34,7 +26,7 @@ myRef.setValue("abc")
                     if (value == null) {
                         ref.child("password").setValue(password)
                         ref.child("connectionString").setValue(connectionString)
-                        callback.onSuccess()
+                        callback.onSuccess(null)
                     } else {
                         callback.onFail()
                     }
@@ -47,7 +39,7 @@ myRef.setValue("abc")
 
         }
 
-        fun login(userName: String, password: String, callback: SignInCallBack) {
+        fun login(userName: String, password: String, callback: CallBack) {
             val ref = Firebase.database.getReference(userName)
 
             ref.addValueEventListener(object : ValueEventListener {
@@ -91,20 +83,76 @@ myRef.setValue("abc")
                 callback.onFail()
             }
         }
+
+        fun getListAccount2Shared(userName: String, callback:CallBack) {
+            val ref = Firebase.database.getReference("$userName/listGmail2Share")
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val value = dataSnapshot.value
+                    if (value != null && value is HashMap<*, *>) {
+                        callback.onSuccess(value.keys)
+                    } else if (value == null) {
+                        callback.onSuccess(HashMap<String,String>().keys)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    callback.onFail()
+                }
+            })
+        }
+
+        fun addNewAccount2Share(userName: String, gmail2Share: String, callback: CallBack?) {
+            val ref = Firebase.database.getReference("$userName/listGmail2Share/$gmail2Share")
+            val ref2 = Firebase.database.getReference("$gmail2Share/connectionString")
+
+            val task = ref.setValue("shared")
+            val task2 = ref2.setValue(GlobalData.currentUser!!.connectionString)
+
+            callback?.onSuccess(null)
+        }
+
+        fun removeAccount2Share(userName: String, gmail2Share: String, callback: CallBack?) {
+            val ref = Firebase.database.getReference("$userName/listGmail2Share/$gmail2Share")
+            val ref2 = Firebase.database.getReference("$gmail2Share/connectionString")
+
+            val task = ref.removeValue()
+            val task2 = ref2.removeValue()
+
+            callback?.onSuccess(null)
+        }
+
+        fun getConnectionString(userName: String, callback: CallBack?) {
+            val ref = Firebase.database.getReference("$userName/connectionString")
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val value = dataSnapshot.value
+                    callback?.onSuccess(value)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    callback?.onFail()
+                }
+            })
+        }
+
+        fun getAccountInfo(userName: String, callback: CallBack?) {
+            val ref = Firebase.database.getReference(userName)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val value = dataSnapshot.value
+                    callback?.onSuccess(value)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    callback?.onFail()
+                }
+            })
+        }
     }
 
     interface CallBack {
         fun onSuccess(any: Any?)
-        fun onFail()
-    }
-
-    interface SignUpCallBack {
-        fun onSuccess()
-        fun onFail()
-    }
-
-    interface SignInCallBack {
-        fun onSuccess(user: User)
         fun onFail()
     }
 }

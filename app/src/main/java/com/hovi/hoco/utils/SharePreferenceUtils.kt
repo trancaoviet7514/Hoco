@@ -21,9 +21,9 @@ class SharePreferenceUtils {
             return getString(context, key, "")
         }
 
-        fun getString(context: Context, key: String, default: String): String? {
+        fun getString(context: Context, key: String, default: String): String {
             val sharedPref = context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE) ?: return default
-            return sharedPref.getString(key, default)
+            return sharedPref.getString(key, default) ?: ""
         }
 
         fun setBoolean(context: Context, key: String, value: Boolean) {

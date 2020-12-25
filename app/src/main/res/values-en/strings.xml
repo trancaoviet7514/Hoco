@@ -35,4 +35,13 @@
     <string name="str_confirm_unlock_passcode">Are you sure to remove passcode?</string>
     <string name="str_change_pass_code">Change passcode</string>
     <string name="str_change_language">Language</string>
+    <string name="str_login_with_google">Login with Google</string>
+    <string name="str_setting_managing_access">System access manager</string>
+    <string name="str_dialog_add_new_account_message">Enter Gmail account that you want to share bellow.</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_agree">Agree</string>
+    <string name="str_confirm_remove_account_shared">Will you remove &lt;br> &lt;b>%s&lt;/b> &lt;br> out of list account to share?</string>
+    <string name="str_error_account_share_have_to_difference_current_account">You can\'t share yourself</string>
+    <string name="str_error_message_connection_string_invalid">Your account have not a connection string. Please contact your system admin.</string>
+    <string name="close">Close</string>
 </resources>

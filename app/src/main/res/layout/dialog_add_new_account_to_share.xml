@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/str_dialog_add_new_account_message"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_height"
+        android:background="@drawable/radius_background_white"
+        android:hint="@string/str_gmail_account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_message"
+        android:textSize="@dimen/login_edt_text_size"
+        android:layout_marginTop="17dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_erorr_message"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_email"
+        android:textColor="@color/red"
+        android:layout_marginTop="4dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_ok"
+        app:layout_constraintTop_toBottomOf="@id/txt_erorr_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btn_ok"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_transparent_gray"
+        android:textColor="@color/teal_700"
+        android:textAllCaps="false"
+        android:minWidth="50dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_cancel"
+        app:layout_constraintTop_toBottomOf="@id/txt_erorr_message"
+        app:layout_constraintEnd_toStartOf="@id/btn_ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btn_cancel"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_transparent_gray"
+        android:textAllCaps="false"
+        android:minWidth="50dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

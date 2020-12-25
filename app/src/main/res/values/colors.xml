@@ -26,4 +26,6 @@
     <color name="red">#F6484E</color>
     <color name="blue1">#2196F3</color>
 
+    <color name="transparent">#00FFFFFF</color>
+
 </resources>
