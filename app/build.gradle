@@ -35,15 +35,12 @@ android {
 
         buildConfigField "String", "BUILD_TIME", '"' + getDate() + '"'
         buildConfigField "String", "GIT_BRANCH", '"' + getGitCurrentBranch() + '"'
-
-        applicationVariants.all { variant ->
-            variant.outputs.all {
-                outputFileName = "hoco_${getGitCurrentBranch()}.apk"
-            }
-        }
     }
 
     buildTypes {
+        debug {
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -51,22 +48,27 @@ android {
 
             buildConfigField "String", "BUILD_TIME", '"' + getDate() + '"'
             buildConfigField "String", "GIT_BRANCH", '"' + getGitCurrentBranch() + '"'
-
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "hoco_${versionName}.apk"
-                }
-            }
-        }
-
-        debug {
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "hoco_${getGitCurrentBranch()}.apk"
-                }
-            }
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def date = new Date();
+            def formattedDate = date.format('ddMMyy_HHmm')
+            def gitBranch = getGitCurrentBranch().replace("/", "_")
+
+            def newApkName
+            if (variant.buildType.name == "debug") {
+                newApkName = "hoco_${gitBranch}"
+            } else {
+                newApkName = "hoco_release_${variant.versionName}"
+            }
+
+            newApkName += "_${formattedDate}.apk"
+            outputFileName = new File(newApkName)
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
