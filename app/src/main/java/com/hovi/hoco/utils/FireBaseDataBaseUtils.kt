@@ -135,6 +135,20 @@ class FireBaseDataBaseUtils {
                 }
             })
         }
+
+        fun getAccountInfo(userName: String, callback: CallBack?) {
+            val ref = Firebase.database.getReference(userName)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val value = dataSnapshot.value
+                    callback?.onSuccess(value)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    callback?.onFail()
+                }
+            })
+        }
     }
 
     interface CallBack {

@@ -20,6 +20,7 @@ import com.hovi.hoco.databinding.ActivityLoginBinding
 import com.hovi.hoco.model.GlobalData
 import com.hovi.hoco.model.User
 import com.hovi.hoco.utils.FireBaseDataBaseUtils
+import com.hovi.hoco.utils.SharePreferenceUtils
 import com.hovi.hoco.utils.ViewUtils
 
 
@@ -97,15 +98,17 @@ class LoginActivity : AppCompatActivity() {
 
                                 ViewUtils.showLoadingView(vb.root, layoutInflater)
 
-                                FireBaseDataBaseUtils.getConnectionString(GlobalData.currentUser!!.userName, object : FireBaseDataBaseUtils.CallBack {
+                                FireBaseDataBaseUtils.getAccountInfo(GlobalData.currentUser!!.userName, object : FireBaseDataBaseUtils.CallBack {
                                     override fun onSuccess(any: Any?) {
-                                        val connectionString = any as String?
-                                        if (connectionString.isNullOrEmpty()) {
-                                            onFail()
+                                        if (any is Map<*,*>) {
+                                            parseAccountInfo(any)
+
+                                            if (!GlobalData.currentUser?.connectionString.isNullOrEmpty()) {
+                                                startActivity(Intent(this@LoginActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+                                                ViewUtils.removeLoadingView(vb.root)
+                                            }
                                         } else {
-                                            GlobalData.currentUser!!.connectionString = any as String
-                                            startActivity(Intent(this@LoginActivity, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                                            ViewUtils.removeLoadingView(vb.root)
+                                            onFail()
                                         }
                                     }
 
@@ -125,6 +128,17 @@ class LoginActivity : AppCompatActivity() {
                 Snackbar.make(vb.root, "Vui lòng kiểm tra kết nối mạng!", Snackbar.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun parseAccountInfo(data: Map<*, *>) {
+        val connectionString = data["connectionString"] ?: ""
+        val isAdmin = data["isAdmin"] ?: false
+
+        GlobalData.currentUser?.connectionString = connectionString as String
+        GlobalData.currentUser?.isAdmin = isAdmin as Boolean
+
+        SharePreferenceUtils.setBoolean(this, IS_ADMIN, isAdmin)
+        SharePreferenceUtils.setString(this, CURRENT_CONNECTION_STRING, connectionString)
     }
 
     fun showConnectionErrorDialog() {
@@ -148,5 +162,6 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         const val CURRENT_CONNECTION_STRING = "CURRENT_CONNECTION_STRING"
+        const val IS_ADMIN = "IS_ADMIN"
     }
 }

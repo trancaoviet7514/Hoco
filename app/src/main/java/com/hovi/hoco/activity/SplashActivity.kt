@@ -43,6 +43,9 @@ class SplashActivity : AppCompatActivity() {
     private fun startFlowCheckLogin() {
         if (FirebaseAuth.getInstance().currentUser != null) {
             GlobalData.currentUser = FirebaseAuth.getInstance().currentUser?.let { User(it) }
+            GlobalData.currentUser?.isAdmin = SharePreferenceUtils.getBoolean(this, LoginActivity.IS_ADMIN)
+            GlobalData.currentUser?.connectionString = SharePreferenceUtils.getString(this, LoginActivity.CURRENT_CONNECTION_STRING, "")
+
             startActivity(Intent(this, RemoteActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         } else {
             startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))

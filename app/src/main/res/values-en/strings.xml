@@ -36,7 +36,7 @@
     <string name="str_change_pass_code">Change passcode</string>
     <string name="str_change_language">Language</string>
     <string name="str_login_with_google">Login with Google</string>
-    <string name="str_setting_managing_access">system access manager</string>
+    <string name="str_setting_managing_access">System access manager</string>
     <string name="str_dialog_add_new_account_message">Enter Gmail account that you want to share bellow.</string>
     <string name="str_cancel">Cancel</string>
     <string name="str_agree">Agree</string>

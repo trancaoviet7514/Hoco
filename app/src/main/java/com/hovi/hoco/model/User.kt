@@ -9,6 +9,7 @@ class User {
     var userName = ""
     var password = ""
     var connectionString = ""
+    var isAdmin = false
 
     constructor(userName: String, password: String, connectionString: String) {
         this.userName = userName
